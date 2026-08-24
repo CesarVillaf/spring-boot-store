@@ -38,7 +38,7 @@ public class StripePaymentGateway implements PaymentGateway {
                     builder.addLineItem(createLineItem(item)));
 
             var session = Session.create(builder.build());
-            return new CheckoutSession(session.getId());
+            return new CheckoutSession(session.getUrl());
         }
         catch (StripeException ex) {
             throw new PaymentException();
